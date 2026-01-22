@@ -1,11 +1,10 @@
-import OpenAI from 'openai';
+const OpenAI = require('openai').default;
 
-// Inicializar OpenAI con la API key desde las variables de entorno
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
+  // Inicializar OpenAI con la API key desde las variables de entorno
+  const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  });
   // Configurar CORS
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
