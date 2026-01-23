@@ -1,10 +1,6 @@
-const OpenAI = require('openai').default;
+const OpenAI = require('openai');
 
 module.exports = async function handler(req, res) {
-  // Inicializar OpenAI con la API key desde las variables de entorno
-  const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
-  });
   // Configurar CORS
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -19,20 +15,34 @@ module.exports = async function handler(req, res) {
 
   // Solo aceptar método POST
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Método no permitido' });
+    return res.status(405).json({ 
+      success: false,
+      error: 'Método no permitido' 
+    });
   }
 
   try {
+    // Validar que la API key esté configurada
+    if (!process.env.OPENAI_API_KEY) {
+      return res.status(500).json({ 
+        success: false,
+        error: 'API key no configurada' 
+      });
+    }
+
+    // Inicializar OpenAI con la API key desde las variables de entorno
+    const openai = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    });
+
     const { message, conversationHistory = [] } = req.body;
 
     // Validar que el mensaje exista
     if (!message || message.trim() === '') {
-      return res.status(400).json({ error: 'El mensaje no puede estar vacío' });
-    }
-
-    // Validar que la API key esté configurada
-    if (!process.env.OPENAI_API_KEY) {
-      return res.status(500).json({ error: 'API key no configurada' });
+      return res.status(400).json({ 
+        success: false,
+        error: 'El mensaje no puede estar vacío' 
+      });
     }
 
     // Construir el historial de conversación
@@ -86,19 +96,27 @@ Características importantes:
 
   } catch (error) {
     console.error('Error en chat API:', error);
+    console.error('Error completo:', JSON.stringify(error, null, 2));
     
     // Manejar diferentes tipos de errores
     if (error.status === 401) {
-      return res.status(401).json({ error: 'API key inválida' });
+      return res.status(401).json({ 
+        success: false,
+        error: 'API key inválida' 
+      });
     }
     
     if (error.status === 429) {
-      return res.status(429).json({ error: 'Límite de solicitudes excedido. Intenta más tarde.' });
+      return res.status(429).json({ 
+        success: false,
+        error: 'Límite de solicitudes excedido. Intenta más tarde.' 
+      });
     }
 
     return res.status(500).json({ 
+      success: false,
       error: 'Error al procesar la solicitud',
-      details: process.env.NODE_ENV === 'development' ? error.message : undefined
+      details: process.env.NODE_ENV === 'development' ? error.message : 'Error interno del servidor'
     });
   }
 }
