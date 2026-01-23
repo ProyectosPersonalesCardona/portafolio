@@ -553,16 +553,15 @@ body.menu-open::before {
 
     & .chat-container {
         background: linear-gradient(135deg, #22435C 0%, #2F999E 100%);
-        padding: 35px 25px 25px;
+        padding: 25px 20px 20px;
         border-radius: 20px;
         text-align: center;
         box-shadow: 0 10px 30px rgba(34, 67, 92, 0.3);
         color: #fff;
-        height: 100%;
-        min-height: 650px;
+        height: 650px;
+        max-height: 650px;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
         align-items: center;
         position: relative;
         overflow: hidden;
@@ -592,43 +591,47 @@ body.menu-open::before {
 
     & .chat-icon {
         background: rgba(255, 255, 255, 0.2);
-        padding: 25px;
+        padding: 20px;
         border-radius: 50%;
         display: inline-flex;
         animation: float 3s ease-in-out infinite;
         z-index: 1;
+        flex-shrink: 0;
     }
 
     & h4 {
-        font-size: 24px;
+        font-size: 22px;
         font-weight: 600;
-        margin: 15px 0;
+        margin: 12px 0 8px;
         z-index: 1;
+        flex-shrink: 0;
     }
 
 
     & .chat-description {
-        font-size: 15px;
-        line-height: 1.6;
+        font-size: 14px;
+        line-height: 1.5;
         max-width: 300px;
         opacity: 0.95;
         z-index: 1;
-        margin-bottom: 15px;
+        margin-bottom: 12px;
+        flex-shrink: 0;
     }
 
     & .chat-messages {
         width: 100%;
         flex: 1;
         overflow-y: auto;
-        padding: 15px 10px;
+        overflow-x: hidden;
+        padding: 12px 10px;
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 10px;
         z-index: 1;
-        margin-bottom: 15px;
+        margin-bottom: 12px;
         background: rgba(255, 255, 255, 0.05);
         border-radius: 15px;
-        max-height: 400px;
+        min-height: 0;
     }
 
     & .chat-messages::-webkit-scrollbar {
@@ -730,13 +733,14 @@ body.menu-open::before {
     & .chat-input-container {
         width: 100%;
         display: flex;
-        gap: 10px;
+        gap: 8px;
         align-items: center;
         background: rgba(255, 255, 255, 0.95);
-        padding: 10px 15px;
+        padding: 8px 12px;
         border-radius: 25px;
         box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         z-index: 1;
+        flex-shrink: 0;
     }
 
     & .chat-input {
@@ -1113,17 +1117,43 @@ footer{
         padding: 20px !important;
         
         & .chat-container {
-            padding: 25px 20px;
-            min-height: 450px;
+            padding: 15px 12px 12px;
+            height: 500px;
+            max-height: 500px;
         }
         
         & .chat-icon {
-            padding: 18px;
+            padding: 12px;
+        }
+        
+        & h4 {
+            font-size: 18px;
+            margin: 8px 0 6px;
         }
         
         & .chat-description {
+            font-size: 13px;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        & .chat-messages {
+            padding: 10px 8px;
+            gap: 8px;
+        }
+        
+        & .chat-input-container {
+            padding: 6px 10px;
+        }
+        
+        & .chat-input {
             font-size: 14px;
-            margin-bottom: 15px;
+            padding: 6px 10px;
+        }
+        
+        & .chat-send-btn {
+            width: 36px;
+            height: 36px;
         }
     }
 }
