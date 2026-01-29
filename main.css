@@ -655,16 +655,17 @@ body.menu-open::before {
     & .user-message,
     & .bot-message {
         display: flex;
+        flex-direction: column;
         width: 100%;
         animation: fadeIn 0.3s ease;
     }
 
     & .user-message {
-        justify-content: flex-end;
+        align-items: flex-end;
     }
 
     & .bot-message {
-        justify-content: flex-start;
+        align-items: flex-start;
     }
 
     & .message-content {
@@ -674,6 +675,21 @@ body.menu-open::before {
         word-wrap: break-word;
         line-height: 1.4;
         font-size: 14px;
+    }
+
+    & .message-timestamp {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.6);
+        margin-top: 4px;
+        padding: 0 4px;
+    }
+
+    & .user-message .message-timestamp {
+        text-align: right;
+    }
+
+    & .bot-message .message-timestamp {
+        text-align: left;
     }
 
     & .user-message .message-content {

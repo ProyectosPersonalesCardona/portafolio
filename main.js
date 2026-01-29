@@ -116,7 +116,16 @@ document.addEventListener('DOMContentLoaded', function() {
     messageContent.className = 'message-content';
     messageContent.textContent = content;
     
+    // Añadir timestamp
+    const timestamp = document.createElement('div');
+    timestamp.className = 'message-timestamp';
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    timestamp.textContent = `${hours}:${minutes}`;
+    
     messageDiv.appendChild(messageContent);
+    messageDiv.appendChild(timestamp);
     chatMessages.appendChild(messageDiv);
     
     // Scroll al último mensaje

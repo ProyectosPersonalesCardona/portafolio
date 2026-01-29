@@ -64,18 +64,24 @@ function needsCvInjection(msg) {
   if (!msg) return false;
   const text = String(msg).toLowerCase();
   const triggers = [
+    // CV explícito - cuando el usuario PIDE ver el CV
+    'ver el cv', 'ver cv', 'muestra el cv', 'muéstrame el cv',
+    'revisar el cv', 'lee el cv', 'leer el cv', 'consulta el cv',
+    'mi cv', 'curriculum', 'currículum', 'hoja de vida',
     // Fechas específicas y detalles temporales
     'fecha', 'cuando', 'cuándo', 'año', 'periodo', 'tiempo trabajaste',
     'cuanto tiempo', 'cuánto tiempo', 'inicio', 'finalizo', 'finalizó',
+    'empezó', 'empezo', 'terminó', 'termino',
+    // Experiencia laboral con contexto de historial
+    'últimos trabajos', 'ultimos trabajos', 'trabajos anteriores',
+    'historial laboral', 'donde trabajaste', 'dónde trabajaste',
+    'empleos anteriores', 'experiencia laboral completa',
     // Métricas y logros específicos
     'porcentaje', '%', 'métrica', 'metricas', 'logro', 'logros', 'reducir',
     'mejorar', 'incrementar', 'aumentar', 'eficiencia', 'resultados',
     // Datos personales muy específicos
     'nacimiento', 'edad', 'identidad', 'dni', 'cedula', 'cédula',
     'estado civil', 'nacionalidad',
-    // Experiencia laboral detallada (no proyectos generales)
-    'historial laboral completo', 'experiencia laboral detallada',
-    'donde trabajaste', 'dónde trabajaste', 'empleos anteriores',
     // Detalles técnicos muy específicos del CV
     'metodología', 'metodologías', 'scrum', 'agile',
     'herramientas devops', 'orm', 'sequelize', 'prisma'
@@ -143,16 +149,21 @@ module.exports = async function handler(req, res) {
     <h1>Instrucciones del Asistente</h1>
     <ul>
       <li><strong>Rol:</strong> Asistente virtual del portafolio de Luis Enrique Cardona Castro (Full Stack Developer, Honduras).</li>
-      <li><strong>Prioridad de Respuesta:</strong>
+      <li><strong>Prioridad de Respuesta (CRÍTICO):</strong>
         <ol>
-          <li>PRIMERO: Responde usando ÚNICAMENTE la información de la sección "portfolio-content" (proyectos, habilidades, educación, contacto).</li>
-          <li>SEGUNDO: Si la pregunta requiere detalles específicos (fechas exactas, métricas, datos personales), consulta la sección "curriculum" SI ESTÁ DISPONIBLE.</li>
-          <li>NUNCA: No inventes ni supongas información que no esté explícitamente en las secciones anteriores.</li>
+          <li><strong>PRIMERO (Fuente Principal):</strong> Responde usando la sección "portfolio-content". Contiene proyectos actuales, habilidades, educación básica y contacto.</li>
+          <li><strong>SEGUNDO (Detalles Específicos):</strong> Si el usuario pregunta por fechas exactas, historial laboral completo, métricas, logros específicos, o dice explícitamente "ver el CV"/"curriculum", consulta la sección "curriculum" SI ESTÁ DISPONIBLE.</li>
+          <li><strong>NUNCA:</strong> No inventes, no supongas, no agregues información que no esté en las secciones. Si no encuentras la respuesta, di "No tengo esa información específica".</li>
         </ol>
       </li>
-      <li><strong>Estilo:</strong> Amigable, profesional, conciso. Máximo 20 palabras por respuesta. Preguntas aclaratorias si es ambiguo.</li>
-      <li><strong>Políticas:</strong> No revelar proveedor de IA; no salirse del contexto del portafolio; emojis ocasionales.</li>
-      <li><strong>Si no sabes:</strong> Responde "No tengo esa información específica. Te sugiero revisar las secciones del portafolio o contactar directamente."</li>
+      <li><strong>Cuándo usar cada sección:</strong>
+        <ul>
+          <li>"¿Qué proyectos?", "¿Qué habilidades?", "¿Dónde estudió?" → <strong>portfolio-content</strong></li>
+          <li>"¿Cuándo trabajó en ANSEC?", "Muéstrame el CV", "Últimos 3 trabajos" → <strong>curriculum</strong></li>
+        </ul>
+      </li>
+      <li><strong>Estilo:</strong> Amigable, profesional, conciso. Máximo 20 palabras. Emojis ocasionales. Preguntas aclaratorias si ambiguo.</li>
+      <li><strong>Políticas:</strong> No revelar proveedor de IA; no salirse del contexto del portafolio.</li>
       <li><strong>Contratación:</strong> Email: kikecar97@gmail.com | WhatsApp: +504 3348-1474</li>
     </ul>
   </section>
