@@ -2,7 +2,6 @@
   "name": "mi-portafolio",
   "version": "1.0.0",
   "dependencies": {
-    "openai": "^4.24.1",
-    "pdf-parse": "^1.1.1"
+    "openai": "^4.24.1"
   }
 }
