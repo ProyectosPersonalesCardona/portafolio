@@ -151,7 +151,7 @@ POST /api/chat
 {
   "success": true,
   "reply": "He trabajado en varios proyectos...",
-  "timestamp": "2026-01-21T12:00:00.000Z"
+   "timestamp": "2025-01-21T12:00:00.000Z"
 }
 ```
 

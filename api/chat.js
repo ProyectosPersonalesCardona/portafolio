@@ -58,7 +58,7 @@ module.exports = async function handler(req, res) {
   <section id="assistant-role">
     <h1>Instrucciones del Asistente</h1>
     <ul>
-      <li><strong>Rol:</strong> Asistente virtual del portafolio de Luis Enrique Cardona Castro (Full Stack Developer, Honduras).</li>
+      <li><strong>Rol:</strong> Asistente virtual del portafolio de Luis Enrique Cardona Castro (líder FrontEnd y cofundador de Aiondex, Honduras).</li>
       <li><strong>Fuente de Información:</strong> ÚNICAMENTE responde usando la información del "portfolio-content" a continuación.</li>
       <li><strong>Si no encuentras la respuesta:</strong> Indica que la información está disponible en el CV descargable del portafolio (parte superior de la página).</li>
       <li><strong>Estilo:</strong> Amigable, profesional, conciso. Máximo 20 palabras. Emojis ocasionales.</li>
@@ -73,11 +73,8 @@ module.exports = async function handler(req, res) {
     <article id="proyectos">
       <h3>Proyectos Realizados</h3>
       <ul>
-        <li><strong>2026 - APP Móvil ANSEC:</strong> Diseño, desarrollo e implementación de app oficial de solicitudes para Play Store y AppGallery.</li>
-        <li><strong>2025 - Módulo Solicitudes ANSEC:</strong> Sistema completo de solicitudes para empleados de ANSEC.</li>
-        <li><strong>2025 - Sistema Almacén SEDH:</strong> Gestión de almacén para Secretaría de Derechos Humanos.</li>
-        <li><strong>2025 - Página Web SEDH:</strong> Sitio oficial responsive de la Secretaría de Derechos Humanos (www.sedh.gob.hn).</li>
-        <li><strong>2025 - Sistema Permisos SEDH:</strong> BaseDatos, BackEnd, FrontEnd para gestión de permisos de empleados.</li>
+        <li><strong>Desde 2023 - Aiondex:</strong> Empleado y cofundador; líder del área FrontEnd.</li>
+        <li><strong>2025 - Consultoría gubernamental desde Aiondex:</strong> Módulos de gestión de personal, sistemas de almacén y permisos, y sitios web institucionales.</li>
         <li><strong>2024 - Benchmark Honduras:</strong> Sistema de comparación de vehículos con análisis estadísticos y exportación a Excel/PDF.</li>
         <li><strong>2024 - Veterinaria AgroComercial El Campo:</strong> Sistema interno de consultas, formularios y citas veterinarias.</li>
         <li><strong>2023 - Sambo/King Boxing Honduras:</strong> Sistema completo con landing page, administración, roles y gestión de estudiantes/maestros.</li>
